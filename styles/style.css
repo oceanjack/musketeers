@@ -1,0 +1,26 @@
+.form-signin, .form-reg {
+  min-width: 280px;
+  max-width: 420px;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  border:1px solid #ccc;
+  padding: 12px 24px;
+  border-radius:7px;
+  box-shadow:0px 0px 3px #888;
+  display:none;
+  background-color:#eee;
+}
+.alert {
+  display:none;
+}
+#lean_overlay {
+  position: fixed;
+  z-index:100;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: #000;
+  display: none;
+}
