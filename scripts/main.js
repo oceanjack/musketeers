@@ -110,14 +110,7 @@ var login = function() {
     },
     error: function(user, error) {
       node.show();
-      switch(error.code) {
-        case 210:
-          node.text('用户不存在或密码错误');
-          break;
-        default:
-          node.text(error.code + ":" + error.message);
-          break;
-      }
+      node.text('用户不存在或密码错误');
     }
   });
 };
