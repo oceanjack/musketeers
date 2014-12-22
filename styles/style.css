@@ -13,6 +13,7 @@ body {
   background-color: #333;
   margin-bottom:0;
   box-shadow:0px 0px 5px #777;
+  border:1px solid #333;
 }
 .form-signin, .form-reg {
   min-width: 280px;
