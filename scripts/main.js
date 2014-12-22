@@ -114,3 +114,57 @@ var login = function() {
     }
   });
 };
+//添加首页文章
+var addContent = function() {
+  var mock = [
+    {
+      img: 'imgs/1.png',
+      title: '重新起航',
+      url: '#',
+      id: '0'
+    },
+    {
+      img: 'imgs/2.jpg',
+      title: '思考那些事',
+      url: '#',
+      id: '1'
+    },
+    {
+      img: 'imgs/3.jpg',
+      title: '点我就有惊喜',
+      url: '#',
+      id: '2'
+    },
+    {
+      img: 'imgs/4.png',
+      title: '再谈谈设计',
+      url: '#',
+      id: '3'
+    },
+    {
+      img: 'imgs/5.png',
+      title: '这里有个不为人之的问题，你猜是啥',
+      url: '#',
+      id: '4'
+    },
+    {
+      img: 'imgs/6.jpg',
+      title: '连接这个世界',
+      url: '#'
+    }
+  ];
+
+  for(var i = 0, l = mock.length; i < l; ++i) {
+    var node = $(
+      '<a class="item" href="' + mock[i].url + '">' + 
+         '<div class="imgs">' +
+           '<img src="' + mock[i].img + '">' +
+         '</div>' +
+         '<p class="title"><span class="heart"></span><span class="num">0</span>' +
+           (mock[i].title.length >= 7 ? (mock[i].title.substr(0, 7) + '...') : mock[i].title) +
+         '</p>' +
+      '</a>'
+    );
+    $('.container').append(node);
+  }
+}();
