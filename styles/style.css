@@ -11,6 +11,9 @@
   display:none;
   background-color:#eee;
 }
+.form-signin > *, .form-reg > * {
+  margin-bottom:10px;
+}
 .alert {
   display:none;
 }
