@@ -63,9 +63,10 @@ var reg = function() {
   }
   var query = new AV.Query(AV.User);
   query.equalTo('username', teacher);
+  var empty = (teacher.trim() == '');
   query.find({
     success: function(result) {
-      if(result.length <= 0) {
+      if(result.length <= 0 && !empty) {
         node.show();
         node.text('无法正常查找到推荐人');
         return;
@@ -76,6 +77,10 @@ var reg = function() {
 
       user.signUp(null, {
         success: function(user) {
+          if(empty) {
+            window.location.reload();
+            return;
+          }
           user.follow(result[0].id, {
             success: function(res) {
               window.location.reload();

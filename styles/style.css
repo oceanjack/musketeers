@@ -159,6 +159,51 @@ body {
   box-sizing:border-box;
   box-shadow:0px 0px 2px #777;
 }
+.container .info {
+  width:100%;
+  max-width:480px;
+  min-width:280px;
+  text-align:left;
+  padding-top:6%;
+  padding-bottom:6%;
+  padding-left:10%;
+  padding-right:10%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color:#fff;
+  border-radius:7px;
+  border:1px solid #ccc;
+  box-shadow:0px 0px 5px #999;
+  position:relative;
+  overflow:hidden;
+  background-color: #ee7;
+}
+.container .info h3 {
+  margin-top:0;
+}
+.container .info .infoitem {
+  position:relative;
+  z-index:20;
+  font-size:1.1em;
+}
+.container .info:after {
+  content:'证';
+  font-size:4em;
+  font-weight:700;
+  padding-left:20px;
+  padding-top:12px;
+  position:absolute;
+  z-index:10;
+  width:128px;
+  height:128px;
+  color:#c22;
+  border:12px solid #c22;
+  border-radius:128px;
+  bottom:-36px;
+  right:-36px;
+  text-shadow:1px 1px 4px #c22;
+  box-shadow:inset 0px 0px 8px #c22;
+}
 #lean_overlay {
   position: fixed;
   z-index:100;
