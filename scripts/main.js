@@ -38,6 +38,7 @@ var reg = function() {
   var username = $('.form-reg input').eq(1).val();
   var password = $('.form-reg input').eq(2).val();
   var passwordConfirm = $('.form-reg input').eq(3).val();
+  var teacher = $('.form-reg input').eq(4).val();
   
   var node = $('.form-reg .alert');
   if(email.trim() == '') {
@@ -60,31 +61,52 @@ var reg = function() {
     node.text('啊哦，两次密码不一致');
     return;
   }
-  
-  user.set("email", email);
-  user.set("username", username);
-  user.set("password", password);
-  //user.set("phone", "415-392-0202");
+  var query = new AV.Query(AV.User);
+  query.equalTo('username', teacher);
+  query.find({
+    success: function(result) {
+      if(result.length <= 0) {
+        node.show();
+        node.text('无法正常查找到推荐人');
+        return;
+      }
+      user.set("email", email);
+      user.set("username", username);
+      user.set("password", password);
 
-  user.signUp(null, {
-    success: function(user) {
-      window.location.reload();
+      user.signUp(null, {
+        success: function(user) {
+          user.follow(result[0].id, {
+            success: function(res) {
+              window.location.reload();
+            },
+            error: function(res) {
+              window.location.reload();
+            }
+          })
+        },
+        error: function(user, error) {
+          node.show();
+          switch(error.code) {
+            case 202:
+              node.text('该用户名已存在');
+              break;
+            case 203:
+              node.text('此电子邮箱已经被占用');
+              break;
+            default:
+              node.text(error.code + ":" + error.message);
+              break;
+          };
+        }
+      });    
     },
-    error: function(user, error) {
+    error: function(result) {
       node.show();
-      switch(error.code) {
-        case 202:
-          node.text('该用户名已存在');
-          break;
-        case 203:
-          node.text('此电子邮箱已经被占用');
-          break;
-        default:
-          node.text(error.code + ":" + error.message);
-          break;
-      };
+      node.text('无法正常查找到推荐人');
     }
   });
+
 };
 
 //登陆
