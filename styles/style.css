@@ -123,7 +123,8 @@ body {
 .container .item:visited, .container .item:link {
   text-decoration:none;
 }
-.container .article {
+.container .article,
+.container .addOne {
   width:100%;
   min-width:280px;
   max-width:860px;
@@ -141,7 +142,8 @@ body {
   font-size:1em;
   margin-bottom:24px;
 }
-.container .article > * {
+.container .article > *,
+.container .addOne > * {
   margin-bottom:12px;
 }
 .container .article h3 {
